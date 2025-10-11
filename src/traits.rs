@@ -10,8 +10,7 @@ use unconst::unconst;
 /// - `Copy` + `Clone`: possibility of `!` exponentiation
 /// - `PartialEq` + `Eq`: decidability
 #[unconst]
-#[const_trait]
-pub trait Integral:
+pub const trait Integral:
     Copy
     + [const] Clone
     + [const] PartialEq
