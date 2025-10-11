@@ -9,11 +9,8 @@
 #![feature(const_trait_impl)]
 #![feature(const_try)]
 #![feature(const_for)]
-#![feature(const_box)]
-#![feature(const_mut_refs)]
-#![feature(const_option)]
-#![feature(const_refs_to_cell)]
 #![feature(const_heap)]
+#![feature(const_destruct)]
 // #![feature(const_iter)]
 
 extern crate alloc;

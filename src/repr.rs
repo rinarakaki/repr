@@ -10,7 +10,7 @@ use crate::seq::Seq;
 use crate::traits::Integral;
 
 #[unconst]
-pub enum Repr<I: ~const Integral> {
+pub enum Repr<I: [const] Integral> {
     True(Box<dyn Fn(Seq<I>) -> bool>),
     // ⊥ (multiplicative disjunction unit)
     // False,
@@ -39,7 +39,7 @@ pub enum Repr<I: ~const Integral> {
 }
 
 #[unconst]
-impl<I: ~const Integral> Repr<I> {
+impl<I: [const] Integral> Repr<I> {
     pub const fn zero() -> Self {
         Repr::Zero
     }
@@ -50,7 +50,7 @@ impl<I: ~const Integral> Repr<I> {
 
     pub const fn seq<M>(is: M) -> Self
     where
-        M: ~const IntoIterator<Item = I>,
+        M: [const] IntoIterator<Item = I>,
         M::IntoIter: ExactSizeIterator,
     {
         let is = is.into_iter();
@@ -124,19 +124,19 @@ impl<I: ~const Integral> Repr<I> {
         }
     }
 
-    pub const fn prod<M: ~const Iterator<Item = Self>>(reprs: M) -> Self {
+    pub const fn prod<M: [const] Iterator<Item = Self>>(reprs: M) -> Self {
         reprs.reduce(|acc, e| acc.mul(e)).unwrap()
     }
 
-    pub const fn any<M: ~const Iterator<Item = Self>>(reprs: M) -> Self {
+    pub const fn any<M: [const] Iterator<Item = Self>>(reprs: M) -> Self {
         reprs.reduce(|acc, e| acc.or(e)).unwrap()
     }
 
-    pub const fn sum<M: ~const Iterator<Item = Self>>(reprs: M) -> Self {
+    pub const fn sum<M: [const] Iterator<Item = Self>>(reprs: M) -> Self {
         reprs.reduce(|acc, e| acc.add(e)).unwrap()
     }
 
-    pub const fn all<M: ~const Iterator<Item = Self>>(reprs: M) -> Self {
+    pub const fn all<M: [const] Iterator<Item = Self>>(reprs: M) -> Self {
         reprs.reduce(|acc, e| acc.and(e)).unwrap()
     }
 
