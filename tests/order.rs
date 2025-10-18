@@ -4,9 +4,11 @@ use repr::wrappers::seq;
 fn inclusion() {
     assert!(seq(['a']).le(&seq(['a']).or(seq(['b']))));
     assert!(seq(['b']).le(&seq(['a']).or(seq(['b']))));
-    assert!(seq(['a'])
-        .or(seq(['b']))
-        .le(&seq(['a']).or(seq(['b'])).or(seq(['c']))));
+    assert!(
+        seq(['a'])
+            .or(seq(['b']))
+            .le(&seq(['a']).or(seq(['b'])).or(seq(['c'])))
+    );
     // TODO(rinarakaki)
     // assert!(seq(['b']).or(seq(['c'])).le(&seq(['a']).or(seq(['b'])).or(seq(['c']))));
 }

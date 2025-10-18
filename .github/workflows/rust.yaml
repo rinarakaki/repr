@@ -17,11 +17,11 @@ jobs:
     steps:
     - uses: actions/checkout@v5
 
-    - run: rustup install nightly
+    - run: rustup install nightly && rustup default nightly && rustup component add rustfmt clippy
 
-    - run: cargo fmt --check
+    - run: cargo +nightly fmt --check
 
-    - run: cargo clippy --all-targets --all-features
+    - run: cargo +nightly clippy --all-targets --all-features
 
     - run: cargo +nightly build
 

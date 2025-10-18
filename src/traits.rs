@@ -13,13 +13,13 @@ use unconst::unconst;
 #[const_trait]
 pub trait Integral:
     Copy
-    + ~const Clone
-    + ~const PartialEq
-    + Eq
-    + ~const PartialOrd
-    + ~const Ord
+    + [const] Clone
+    + [const] PartialEq
+    + [const] Eq
+    + [const] PartialOrd
+    + [const] Ord
     + Step
-    + ~const Destruct
+    + [const] Destruct
     + Debug
     + Sync
     + Send

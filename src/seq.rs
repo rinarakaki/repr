@@ -8,15 +8,15 @@ use crate::traits::Integral;
 #[unconst]
 #[derive_const(Clone, PartialEq, PartialOrd, Ord)]
 #[derive(Debug, Eq)]
-pub struct Seq<I: ~const Integral>(Vec<I>);
+pub struct Seq<I: const Integral>(Vec<I>);
 
 #[unconst]
-impl<I: ~const Integral> Seq<I> {
+impl<I: const Integral> Seq<I> {
     pub const fn empty() -> Self {
         Seq(Vec::new())
     }
 
-    pub const fn new<M: ~const IntoIterator<Item = I>>(is: M) -> Self {
+    pub const fn new<M: [const] IntoIterator<Item = I>>(is: M) -> Self {
         Seq(is.into_iter().collect())
     }
 
@@ -40,14 +40,14 @@ impl<I: ~const Integral> Seq<I> {
 }
 
 #[unconst]
-impl<I: ~const Integral> const AsRef<[I]> for Seq<I> {
+impl<I: const Integral> const AsRef<[I]> for Seq<I> {
     fn as_ref(&self) -> &[I] {
         &self.0
     }
 }
 
 #[unconst]
-impl<I: ~const Integral> const Deref for Seq<I> {
+impl<I: const Integral> const Deref for Seq<I> {
     type Target = Vec<I>;
     fn deref(&self) -> &Vec<I> {
         &self.0
@@ -55,7 +55,7 @@ impl<I: ~const Integral> const Deref for Seq<I> {
 }
 
 #[unconst]
-impl<I: ~const Integral> const IntoIterator for Seq<I> {
+impl<I: const Integral> const IntoIterator for Seq<I> {
     type Item = I;
     type IntoIter = <Vec<I> as IntoIterator>::IntoIter;
 

@@ -8,7 +8,7 @@ use crate::seq::Seq;
 use crate::traits::Integral;
 
 #[unconst]
-impl<I: ~const Integral> const From<I> for Seq<I> {
+impl<I: const Integral> const From<I> for Seq<I> {
     fn from(value: I) -> Self {
         Self::one(value)
     }
@@ -21,28 +21,28 @@ impl From<&str> for Seq<char> {
 }
 
 #[unconst]
-impl<I: ~const Integral> const From<Range<I>> for Interval<I> {
+impl<I: const Integral> const From<Range<I>> for Interval<I> {
     fn from(range: Range<I>) -> Self {
         Interval(range.start, range.end)
     }
 }
 
 #[unconst]
-impl<I: ~const Integral> const From<I> for Repr<I> {
+impl<I: const Integral> const From<I> for Repr<I> {
     fn from(value: I) -> Repr<I> {
         Repr::Seq(Seq::one(value))
     }
 }
 
 #[unconst]
-impl<I: ~const Integral> const From<Range<I>> for Repr<I> {
+impl<I: const Integral> const From<Range<I>> for Repr<I> {
     fn from(range: Range<I>) -> Self {
         Repr::Interval(range.into())
     }
 }
 
 #[unconst]
-impl<I: ~const Integral, T: Into<Repr<I>>> const From<[T; 1]> for Repr<I> {
+impl<I: const Integral, T: Into<Repr<I>>> const From<[T; 1]> for Repr<I> {
     fn from(value: [T; 1]) -> Repr<I> {
         value.into_iter().nth(0).unwrap().into().inf()
     }

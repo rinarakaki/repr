@@ -17,10 +17,10 @@ use crate::traits::Integral;
 // TODO(rinarakaki) Does negative Interval (self.1 < self.0) have use case?
 #[derive_const(Clone, Default, PartialEq, PartialOrd, Ord)]
 #[derive(Copy, Debug, Eq)]
-pub struct Interval<I: ~const Integral>(pub I, pub I);
+pub struct Interval<I: const Integral>(pub I, pub I);
 
 #[unconst]
-impl<I: ~const Integral> Interval<I> {
+impl<I: const Integral> Interval<I> {
     pub const fn new(from: I, to: I) -> Self {
         if from <= to {
             Interval(from, to)
@@ -128,12 +128,12 @@ impl<I: ~const Integral> Interval<I> {
     }
 
     pub const fn len(&self) -> usize {
-        <I as Step>::steps_between(&self.0, &self.1).unwrap()
+        <I as Step>::steps_between(&self.0, &self.1).1.unwrap()
     }
 }
 
 #[unconst]
-impl<I: ~const Integral> const IntoIterator for Interval<I> {
+impl<I: const Integral> const IntoIterator for Interval<I> {
     type Item = I;
     type IntoIter = RangeInclusive<I>;
 

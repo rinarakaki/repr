@@ -12,7 +12,7 @@ use crate::repr::Repr;
 use crate::traits::Integral;
 
 #[unconst]
-impl<I: ~const Integral> const Debug for Repr<I> {
+impl<I: const Integral> const Debug for Repr<I> {
     fn fmt(&self, f: &mut fmt::Formatter<'_>) -> fmt::Result {
         match self {
             Repr::True(_) => panic!("True variant cannot be cloned"),
@@ -30,7 +30,7 @@ impl<I: ~const Integral> const Debug for Repr<I> {
 }
 
 #[unconst]
-impl<I: ~const Integral> const Clone for Repr<I> {
+impl<I: const Integral> const Clone for Repr<I> {
     fn clone(&self) -> Self {
         match self {
             Repr::True(_) => panic!("True variant cannot be cloned"),
@@ -47,7 +47,7 @@ impl<I: ~const Integral> const Clone for Repr<I> {
 }
 
 #[unconst]
-impl<I: ~const Integral> const PartialEq for Repr<I> {
+impl<I: const Integral> const PartialEq for Repr<I> {
     fn eq(&self, other: &Self) -> bool {
         match (self, other) {
             (Repr::True(_), Repr::True(_)) => panic!("True variant is uncomparable"),
@@ -72,10 +72,10 @@ impl<I: ~const Integral> const PartialEq for Repr<I> {
 }
 
 #[unconst]
-impl<I: ~const Integral> Eq for Repr<I> {}
+impl<I: const Integral> Eq for Repr<I> {}
 
 #[unconst]
-impl<I: ~const Integral> const PartialOrd for Repr<I> {
+impl<I: const Integral> const PartialOrd for Repr<I> {
     fn partial_cmp(&self, other: &Self) -> Option<Ordering> {
         if self == other {
             Some(Ordering::Equal)
@@ -88,7 +88,7 @@ impl<I: ~const Integral> const PartialOrd for Repr<I> {
 }
 
 #[unconst]
-impl<I: ~const Integral> const BitAnd<Self> for Repr<I> {
+impl<I: const Integral> const BitAnd<Self> for Repr<I> {
     type Output = Self;
 
     fn bitand(self, rhs: Self) -> Self {
@@ -97,7 +97,7 @@ impl<I: ~const Integral> const BitAnd<Self> for Repr<I> {
 }
 
 #[unconst]
-impl<I: ~const Integral> const BitAnd<I> for Repr<I> {
+impl<I: const Integral> const BitAnd<I> for Repr<I> {
     type Output = Self;
 
     fn bitand(self, rhs: I) -> Self {
@@ -106,7 +106,7 @@ impl<I: ~const Integral> const BitAnd<I> for Repr<I> {
 }
 
 #[unconst]
-impl<I: ~const Integral> const BitAnd<Range<I>> for Repr<I> {
+impl<I: const Integral> const BitAnd<Range<I>> for Repr<I> {
     type Output = Self;
 
     fn bitand(self, rhs: Range<I>) -> Self::Output {
@@ -115,7 +115,7 @@ impl<I: ~const Integral> const BitAnd<Range<I>> for Repr<I> {
 }
 
 #[unconst]
-impl<I: ~const Integral, T: Into<Self>> const BitAnd<[T; 1]> for Repr<I> {
+impl<I: const Integral, T: Into<Self>> const BitAnd<[T; 1]> for Repr<I> {
     type Output = Self;
 
     fn bitand(self, rhs: [T; 1]) -> Self::Output {
@@ -124,7 +124,7 @@ impl<I: ~const Integral, T: Into<Self>> const BitAnd<[T; 1]> for Repr<I> {
 }
 
 #[unconst]
-impl<I: ~const Integral> const BitOr<Self> for Repr<I> {
+impl<I: const Integral> const BitOr<Self> for Repr<I> {
     type Output = Self;
 
     fn bitor(self, rhs: Self) -> Self {
@@ -133,7 +133,7 @@ impl<I: ~const Integral> const BitOr<Self> for Repr<I> {
 }
 
 #[unconst]
-impl<I: ~const Integral> const BitOr<I> for Repr<I> {
+impl<I: const Integral> const BitOr<I> for Repr<I> {
     type Output = Self;
 
     fn bitor(self, rhs: I) -> Self {
@@ -142,7 +142,7 @@ impl<I: ~const Integral> const BitOr<I> for Repr<I> {
 }
 
 #[unconst]
-impl<I: ~const Integral> const BitOr<Range<I>> for Repr<I> {
+impl<I: const Integral> const BitOr<Range<I>> for Repr<I> {
     type Output = Self;
 
     fn bitor(self, rhs: Range<I>) -> Self {
@@ -151,7 +151,7 @@ impl<I: ~const Integral> const BitOr<Range<I>> for Repr<I> {
 }
 
 #[unconst]
-impl<I: ~const Integral, T: Into<Self>> const BitOr<[T; 1]> for Repr<I> {
+impl<I: const Integral, T: Into<Self>> const BitOr<[T; 1]> for Repr<I> {
     type Output = Self;
 
     fn bitor(self, rhs: [T; 1]) -> Self {
@@ -160,7 +160,7 @@ impl<I: ~const Integral, T: Into<Self>> const BitOr<[T; 1]> for Repr<I> {
 }
 
 #[unconst]
-impl<I: ~const Integral> const Mul<Self> for Repr<I> {
+impl<I: const Integral> const Mul<Self> for Repr<I> {
     type Output = Self;
 
     fn mul(self, other: Self) -> Self {
@@ -169,7 +169,7 @@ impl<I: ~const Integral> const Mul<Self> for Repr<I> {
 }
 
 #[unconst]
-impl<I: ~const Integral> const Mul<RangeFull> for Repr<I> {
+impl<I: const Integral> const Mul<RangeFull> for Repr<I> {
     type Output = Self;
 
     fn mul(self, _: RangeFull) -> Self {
@@ -178,7 +178,7 @@ impl<I: ~const Integral> const Mul<RangeFull> for Repr<I> {
 }
 
 #[unconst]
-impl<I: ~const Integral> const Mul<RangeFrom<usize>> for Repr<I> {
+impl<I: const Integral> const Mul<RangeFrom<usize>> for Repr<I> {
     type Output = Self;
 
     fn mul(self, rhs: RangeFrom<usize>) -> Self {
@@ -187,7 +187,7 @@ impl<I: ~const Integral> const Mul<RangeFrom<usize>> for Repr<I> {
 }
 
 #[unconst]
-impl<I: ~const Integral> const Add<Self> for Repr<I> {
+impl<I: const Integral> const Add<Self> for Repr<I> {
     type Output = Self;
 
     fn add(self, other: Self) -> Self {
@@ -196,7 +196,7 @@ impl<I: ~const Integral> const Add<Self> for Repr<I> {
 }
 
 #[unconst]
-impl<I: ~const Integral> const BitAnd<Self> for Interval<I> {
+impl<I: const Integral> const BitAnd<Self> for Interval<I> {
     type Output = Repr<I>;
 
     fn bitand(self, rhs: Self) -> Self::Output {
@@ -205,7 +205,7 @@ impl<I: ~const Integral> const BitAnd<Self> for Interval<I> {
 }
 
 #[unconst]
-impl<I: ~const Integral> const BitOr<Self> for Interval<I> {
+impl<I: const Integral> const BitOr<Self> for Interval<I> {
     type Output = Repr<I>;
 
     fn bitor(self, rhs: Self) -> Self::Output {

@@ -1,7 +1,7 @@
 use regex::{Captures, Regex};
 use unconst::unconst;
 
-use crate::{wrappers::one, Repr};
+use crate::{Repr, wrappers::one};
 
 #[unconst]
 impl Repr<char> {
