@@ -11,7 +11,7 @@ use crate::traits::Integral;
 pub struct Seq<I: Integral>(Vec<I>);
 
 #[unconst]
-impl<I: Integral> Seq<I> {
+impl<I: const Integral> Seq<I> {
     pub const fn empty() -> Self {
         Seq(Vec::new())
     }
@@ -40,14 +40,14 @@ impl<I: Integral> Seq<I> {
 }
 
 #[unconst]
-impl<I: [const] Integral> const AsRef<[I]> for Seq<I> {
+impl<I: const Integral> const AsRef<[I]> for Seq<I> {
     fn as_ref(&self) -> &[I] {
         &self.0
     }
 }
 
 #[unconst]
-impl<I: [const] Integral> const Deref for Seq<I> {
+impl<I: const Integral> const Deref for Seq<I> {
     type Target = Vec<I>;
     fn deref(&self) -> &Vec<I> {
         &self.0
@@ -55,7 +55,7 @@ impl<I: [const] Integral> const Deref for Seq<I> {
 }
 
 #[unconst]
-impl<I: [const] Integral> const IntoIterator for Seq<I> {
+impl<I: const Integral> const IntoIterator for Seq<I> {
     type Item = I;
     type IntoIter = <Vec<I> as IntoIterator>::IntoIter;
 

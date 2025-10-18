@@ -10,7 +10,7 @@ use crate::seq::Seq;
 use crate::traits::Integral;
 
 #[unconst]
-pub enum Repr<I: [const] Integral> {
+pub enum Repr<I: const Integral> {
     True(Box<dyn Fn(Seq<I>) -> bool>),
     // ⊥ (multiplicative disjunction unit)
     // False,
@@ -39,7 +39,7 @@ pub enum Repr<I: [const] Integral> {
 }
 
 #[unconst]
-impl<I: [const] Integral> Repr<I> {
+impl<I: const Integral> Repr<I> {
     pub const fn zero() -> Self {
         Repr::Zero
     }
