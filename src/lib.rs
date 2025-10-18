@@ -5,17 +5,19 @@
 #![feature(stmt_expr_attributes)]
 #![feature(negative_impls)]
 // #![feature(specialization)]
-#![feature(derive_const)]
+
+#![feature(const_destruct)]
+#![feature(const_for)]
 #![feature(const_trait_impl)]
 #![feature(const_try)]
-#![feature(const_for)]
-#![feature(const_heap)]
-#![feature(const_destruct)]
-// #![feature(const_iter)]
 #![feature(const_clone)]
 #![feature(const_cmp)]
 #![feature(const_convert)]
+#![feature(const_heap)]
 #![feature(const_ops)]
+#![feature(derive_const)]
+
+// #![feature(const_iter)]
 
 extern crate alloc;
 
