@@ -1,19 +1,28 @@
 name: Rust
+
 on:
   push:
-    branches: ["main"]
+    branches:
+      - main
   pull_request:
-    branches: ["main"]
+    branches:
+      - main
+
 env:
   CARGO_TERM_COLOR: always
+
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v3
-    - name: Install nightly toolchain
-      run: rustup install nightly
-    - name: Build
-      run: cargo +nightly build
-    - name: Run tests
-      run: cargo +nightly test
+    - uses: actions/checkout@v5
+
+    - run: rustup install nightly
+
+    - run: cargo fmt --check
+
+    - run: cargo clippy --all-targets --all-features
+
+    - run: cargo +nightly build
+
+    - run: cargo +nightly test
