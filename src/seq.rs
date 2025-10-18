@@ -8,7 +8,7 @@ use crate::traits::Integral;
 #[unconst]
 #[derive_const(Clone, PartialEq, PartialOrd, Ord)]
 #[derive(Debug, Eq)]
-pub struct Seq<I: Integral>(Vec<I>);
+pub struct Seq<I: const Integral>(Vec<I>);
 
 #[unconst]
 impl<I: const Integral> Seq<I> {
