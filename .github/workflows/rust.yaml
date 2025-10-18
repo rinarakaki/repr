@@ -19,11 +19,9 @@ jobs:
 
     - run: rustup install nightly
 
-    # TODO
-    # - run: cargo fmt --check
+    - run: cargo fmt --check
 
-    # TODO
-    # - run: cargo clippy --all-targets --all-features
+    - run: cargo clippy --all-targets --all-features
 
     - run: cargo +nightly build
 
