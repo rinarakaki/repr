@@ -128,7 +128,7 @@ impl<I: [const] Integral> Interval<I> {
     }
 
     pub const fn len(&self) -> usize {
-        <I as Step>::steps_between(&self.0, &self.1).unwrap()
+        <I as Step>::steps_between(&self.0, &self.1).1.unwrap()
     }
 }
 
