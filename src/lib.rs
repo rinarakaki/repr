@@ -5,7 +5,6 @@
 #![feature(stmt_expr_attributes)]
 #![feature(negative_impls)]
 // #![feature(specialization)]
-
 #![feature(const_destruct)]
 #![feature(const_for)]
 #![feature(const_trait_impl)]
