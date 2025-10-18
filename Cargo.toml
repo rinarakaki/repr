@@ -14,7 +14,7 @@ readme = "README.md"
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
 [dependencies]
-unconst = { version = "0.12", features = ["const"] }
+unconst = { version = "0.12", features = [] }
 aho-corasick = { version = "1", optional = true }
 # For skipping along search text quickly when a leading byte is known.
 memchr = { version = "2", optional = true }
