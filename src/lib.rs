@@ -15,6 +15,7 @@
 #![feature(const_clone)]
 #![feature(const_cmp)]
 #![feature(const_convert)]
+#![feature(const_ops)]
 
 extern crate alloc;
 

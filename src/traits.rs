@@ -15,7 +15,7 @@ pub trait Integral:
     Copy
     + [const] Clone
     + [const] PartialEq
-    + Eq
+    + [const] Eq
     + [const] PartialOrd
     + [const] Ord
     + Step
