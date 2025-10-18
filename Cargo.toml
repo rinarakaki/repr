@@ -1,12 +1,12 @@
 [package]
 name = "repr"
-version = "0.7.0"
+version = "0.8.0"
 edition = "2024"
 description = "The regular-expression-as-linear-logic interpretation and its implementation"
 license = "MIT/Apache-2.0"
 keywords = ["regular-expression"]
 categories = []
-homepage = "https://gitlab.com/synthetic/repr"
+homepage = "https://github.com/rinarakaki/repr"
 documentation = "https://docs.rs/repr"
 rust-version = "1.85.0"
 readme = "README.md"
@@ -14,7 +14,7 @@ readme = "README.md"
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
 [dependencies]
-unconst = { version = "0.12", features = [] }
+unconst = { version = "0.12", features = ["const"] }
 aho-corasick = { version = "1", optional = true }
 # For skipping along search text quickly when a leading byte is known.
 memchr = { version = "2", optional = true }
