@@ -11,7 +11,7 @@
 #![feature(const_for)]
 #![feature(const_heap)]
 #![feature(const_destruct)]
-#![feature(const_iter)]
+// #![feature(const_iter)]
 #![feature(const_clone)]
 #![feature(const_cmp)]
 #![feature(const_convert)]
